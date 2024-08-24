@@ -1,0 +1,7 @@
+customer account
+email :	hazel.widikdo@gmail.com
+pass  :	qwerty123
+
+admin account
+email : admin@gmail.com
+pass  : admin12345
