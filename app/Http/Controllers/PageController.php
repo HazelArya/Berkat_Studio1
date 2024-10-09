@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function package()
+    public function packages()
     {
-        return view('package');
+        return view('packages');
     }
 
     public function aboutUs()
@@ -16,14 +16,13 @@ class PageController extends Controller
         return view('aboutus');
     }
 
-    public function contact()
+    public function portofolio()
     {
-        return view('contact');
+        return view('portofolio');
     }
 
     public function welcome()
     {
         return view('welcome');
     }
-
 }

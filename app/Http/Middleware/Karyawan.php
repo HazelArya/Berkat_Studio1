@@ -9,15 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Karyawan
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->usertype != 'karyawan'){
-            return redirect('dashboard');
+        if (Auth::user()->usertype != 'karyawan') {
+            return redirect('dashboard.karyawan');
         }
         return $next($request);
     }

@@ -1,4 +1,5 @@
 <x-guest-layout>
+    {{-- <x-app-layout> --}}
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -44,9 +45,14 @@
                 {{ __('Already registered?') }}
             </a>
 
+            <x-nav-link :href="route('welcome')" :active="request()->routeIs('home')">
+                {{ __('Back Home') }}
+            </x-nav-link>
+
             <x-primary-button class="ms-4">
                 {{ __('Register') }}
             </x-primary-button>
         </div>
     </form>
+{{-- </x-app-layout> --}}
 </x-guest-layout>

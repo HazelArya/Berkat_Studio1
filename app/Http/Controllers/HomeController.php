@@ -1,23 +1,6 @@
 <?php
 
-// namespace App\Http\Controllers;
-
-// use Illuminate\Http\Request;
-
-// class HomeController extends Controller
-// {
-//     public function index()
-//     {
-//         if (auth()->user()->role === 'admin') {
-//             return view('admin.dashboard');
-//         } elseif (auth()->user()->role === 'karyawan') {
-//             return view('karyawan.dashboard');
-//         }
-//         return redirect()->route('home');
-//     }
-    
-// }
-
+// app/Http/Controllers/HomeController.php
 
 namespace App\Http\Controllers;
 
@@ -25,12 +8,18 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(Request $request)
+    public function adminDashboard()
     {
-        if ($request->is('admin/dashboard')) {
-            return view('admin.dashboard');
-        } elseif ($request->is('karyawan/dashboard')) {
-            return view('karyawan.dashboard');
-        }
+        return view('admin.dashboard');
+    }
+
+    public function karyawanDashboard()
+    {
+        return view('karyawan.dashboard');
+    }
+
+    public function customerDashboard()
+    {
+        return view('dashboard');
     }
 }
