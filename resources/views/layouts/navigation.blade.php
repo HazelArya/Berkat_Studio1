@@ -24,8 +24,8 @@
                     @endif
                 
                     @if (Auth::check() && Auth::user()->usertype === 'customer')
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard Customer') }}
+                        <x-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
+                            {{ __('Home') }}
                         </x-nav-link>
                     @endif
                 

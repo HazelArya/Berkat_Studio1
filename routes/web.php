@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\BookingController;
 use Faker\Provider\HtmlLorem;
 
 Route::get('/', function () {
@@ -14,6 +15,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
+
 
 Route::get('/package', [PackageController::class, 'index'])->name('package');
 Route::get('/aboutus', [PageController::class, 'aboutUs'])->name('aboutus');
