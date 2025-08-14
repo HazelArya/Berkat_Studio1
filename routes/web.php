@@ -17,14 +17,21 @@ use App\Http\Middleware\Karyawan;
 use App\Models\Report;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\PageViewController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PageViewController::class, 'welcome']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [PageViewController::class, 'dashboard'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Routes for CRUD operations on bookings
 Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
@@ -41,7 +48,7 @@ Route::get('/inbox', [InboxController::class, 'index'])->name('inbox')->middlewa
 // Route::get('/admin/edit/{id}', [InboxController::class, 'edit'])->name('admin.edit');
 // Route::put('/admin/update/{id}', [InboxController::class, 'update'])->name('admin.update');
 Route::get('/inbox/{id}/edit', [InboxController::class, 'edit'])->name('bookings.edit');
-Route::put('/inbox/{id}', [InboxController::class, 'update'])->name('bookings.update');
+Route::put('/inbox/{id}', [InboxController::class, 'update'])->name('inbox.update');
 
 
 
@@ -76,7 +83,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 Route::post('/create-report', [ReportController::class, 'createReport']);
 
-Route::post('/karyawan/absen', [EmployeeController::class, 'absen'])->name('employee.absen');
+// Route::post('/karyawan/absen', [EmployeeController::class, 'absen'])->name('employee.absen');
 // Route::middleware(['auth'])->post('/karyawan/absen', [EmployeeController::class, 'absen'])->name('employee.absen');
 Route::middleware(['auth'])->group(function () {
     Route::post('/employee/absen', [EmployeeController::class, 'storeAttendance'])->name('employee.absen');
