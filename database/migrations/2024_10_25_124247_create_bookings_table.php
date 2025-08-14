@@ -15,8 +15,12 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->string('customer_name');
             $table->foreignId('package_id')->constrained('packages')->onDelete('cascade');
             $table->date('booking_date');
+            $table->enum('class', ['reguler', 'vip', 'vvip']); // Jenis class
+            $table->decimal('price');
+            $table->text('status');
             $table->string('time_slot');
             $table->text('client_note')->nullable();
             $table->timestamps();

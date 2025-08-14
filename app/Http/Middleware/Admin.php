@@ -8,11 +8,21 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Admin
 {
+    // public function handle(Request $request, Closure $next): Response
+    // {
+    //     if (Auth::user()->usertype != 'admin') {
+    //         return redirect('dashboard.admin');
+    //     }
+    //     return $next($request);
+    // }
+
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->usertype != 'admin') {
-            return redirect('dashboard.admin');
+        if (!Auth::check() || Auth::user()->usertype !== 'admin') {
+            return redirect('dashboard.admin')
+                ->with('error', 'Akses ditolak! Halaman ini hanya dapat diakses oleh admin.');
         }
+
         return $next($request);
     }
 }

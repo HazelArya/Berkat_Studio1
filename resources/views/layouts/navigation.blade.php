@@ -12,22 +12,21 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    
                     @if (Auth::check() && Auth::user()->usertype === 'admin')
-                        <x-nav-link :href="route('welcome')" :active="request()->routeIs('home')">
+                        {{-- <x-nav-link :href="route('welcome')" :active="request()->routeIs('home')">
                             {{ __('Home') }}
-                        </x-nav-link>
+                        </x-nav-link> --}}
                 
                         <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                             {{ __('Dashboard Admin') }}
                         </x-nav-link>
                     @endif
                 
-                    @if (Auth::check() && Auth::user()->usertype === 'customer')
+                    {{-- @if (Auth::check() && Auth::user()->usertype === 'customer')
                         <x-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
                             {{ __('Home') }}
                         </x-nav-link>
-                    @endif
+                    @endif --}}
                 
                     @if (Auth::check() && Auth::user()->usertype === 'karyawan')
                         <x-nav-link :href="route('karyawan.dashboard')" :active="request()->routeIs('karyawan.dashboard')">
@@ -35,9 +34,11 @@
                         </x-nav-link>
                     @endif
                 
+                    <x-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
+                        {{ __('Home') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('package')" :active="request()->routeIs('package')">
-                        {{ __('Package
-') }}
+                        {{ __('Package') }}
                     </x-nav-link>
                     
                     <x-nav-link :href="route('portofolio')" :active="request()->routeIs('portofolio')">
@@ -73,7 +74,10 @@
                             @if (Auth::check() && Auth::user()->usertype === 'customer')
                             <div class="indicator">
                                 <span class="indicator-item badge badge-secondary">99+</span>
-                                <button class="btn">inbox</button>
+                                <x-nav-link :href="route('inbox')" :active="request()->routeIs('inbox')" class="btn">
+                                    {{ __('Inbox') }}
+                                </x-nav-link>
+                                
                             </div>
                             @endif
                             @if (Auth::check())

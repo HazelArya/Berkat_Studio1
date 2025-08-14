@@ -11,9 +11,9 @@
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-input-label for="login_by" :value="__('Username / Email')" />
+            <x-text-input id="login_by" class="block mt-1 w-full" type="text" name="login_by" :value="old('login_by')" required autofocus />
+            <x-input-error :messages="$errors->get('login_by')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">

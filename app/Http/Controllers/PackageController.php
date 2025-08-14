@@ -11,9 +11,19 @@ class PackageController extends Controller
     {
         // Mengambil semua data dari tabel packages
         $packages = Package::all();
+        // dd($packages);
 
         // Mengirimkan data ke view
         return view('package', ['package' => $packages]);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'booking_date' => ['required', 'date', 'after_or_equal:today'],
+            'package_id' => ['required', 'exists:packages,id'],
+            // Validasi lainnya
+        ]);
     }
 }
 
